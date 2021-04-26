@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Working with Vite</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/moon.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Working with Vite</h1>
+				</section>
+
+				<section>
+					<h2>read.me</h2>
+					<ul>
+						<li>Raymond Camden</li>
+						<li>Senior Developer Evangelist for Adobe</li>
+						<li>Enterprise Cat Demo Builder</li>
+						<li>Second best "Just Dance 2019" player (in my house)</li>
+						<li>Blogging at raymondcamden.com</li>
+						<li>Tweeting @raymondcamden</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>TL;DR</h2>
+				</section>
+
+				<section>
+				<h2>Vite is...</h2>
+				<ul>
+				<li class="fragment">A very fast build/scaffold tool for web apps</li>
+				<li class="fragment">To be clear, <i>very</i> fast</li>
+				<li class="fragment">Framework agnostic (i.e., not "just" a Vue tool)</li>
+				<li class="fragment">Does not replace the Vue CLI (details on this later)</li>
+				</ul>
+				</section>
+
+				<section>
+					<h2>!TL;DR</h2>
+				</section>
+
+				<section>
+				<h2>Vite is...</h2>
+				<ul>
+				<li class="fragment">A new build/scaffold tool created by Evan You</li>
+				<li class="fragment">Built to improve upon performance issues (initial build, refresh) of Vue CLI/Webpack/etc. </li>
+				<li class="fragment">Works with plain JS (i.e. vanila), Vue, React, Preact, LitElement, Svelte</li>
+				<li class="fragment">For all of the above, TypeScript support too</li>
+				<li class="fragment">More scaffolding options exist</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Vite speed:</h2>
+				<ul>
+				<li class="fragment">Warning: I only <i>kinda</i> get this...</li>
+				<li class="fragment">Webpack has to translate all dependencies before sending to the browser</li>
+				<li class="fragment">There's a linear growth to time as the project grows</li>
+				<li class="fragment">Vite relies on native browser support for ESM (less done on server, more on browser)</li>
+				<li class="fragment">This means more HTTP requests, Vite does some magic to help with this</li>
+				<li class="fragment">Get more from the author: <a href="https://www.youtube.com/watch?v=xXrhg26VCSc" target="_new">https://www.youtube.com/watch?v=xXrhg26VCSc</a></li>
+				</ul>
+				</section>
+
+				<section>
+				<img src="img/speed.png">
+				</section>
+
+				<section>
+				<h2>Vite requires:</h2>
+				<ul>
+				<li class="fragment">Node</li>
+				<li class="fragment">"Modern" browsers supporting ESM (<a href="https://caniuse.com/es6-module" target="_new">CanIUse</a>)</li>
+				<li class="fragment">Support for older browsers: <a href="https://vitejs.dev/guide/build.html#building-for-production" target="_new">Building for Production</a></li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Using Vite</h2>
+				<ul>
+				<li class="fragment">npm init @vitejs/app
+				<li class="fragment">npm init @vitejs/app projectName -- --template vue</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+Use npm init @vitejs/app to make a vanilla app
+Use vue create to make a v3 app
+Use npm init @vitejs/app -- -template vue to do the same and note the differences 
+
+				</aside>
+				</section>
+
+				<section>
+				<h2>More CLI</h2>
+				<ul>
+				<li class="fragment">npm run build (or vite build)</li>
+				<li class="fragment">npm run serve (or vite preview, shows production build)</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				just show build and preview
+				</aside>
+				</section>
+
+
+				<section>
+				<h2>More Details</h2>
+				<ul>
+				<li class="fragment">Fixes "bare" module imports</li>
+				</ul>
+				</section>
+
+				<section data-background="https://www.nps.gov/lacl/learn/nature/images/Image-w-cred-cap_-1200w-_-Brown-Bear-page_-brown-bear-in-fog_2.jpg" data-background-opacity="0.3">
+				<pre><code class="javascript">
+// earlier, npm i bear-library
+import { bear } from 'bear-library'
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>More Details</h2>
+				<ul>
+				<li>Fixes "bare" module imports</li>
+				<li class="fragment">HMR (Hot Module Replacement) officially supported for Vue SFCs, React Fast Refresh, and Preact</li>
+				<li class="fragment">TypeScript support via esbuild, not tsc</li>
+				<li class="fragment">JSX support (sorry, not a fan)</li>
+				<li class="fragment">CSS import, PostCSS, and CSS Modules</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Static Assets</h2>
+				<ul>
+				<li class="fragment">Importing in JS returns the URL to the asset</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				show demos/static1
+				</aside>
+				</section>
+
+				<section>
+				<h2>Static Assets</h2>
+				<ul>
+				<li>Importing in JS returns the URL to the asset</li>
+				<li class="fragment">Can force URL to load via query string</li>
+				<li class="fragment">Can return source via query string</li>
+				<li class="fragment">And web workers</li>
+				</ul>
+				</section>
+
+				<section>
+				<pre><code class="javascript">
+// Explicitly load assets as URL
+import assetAsURL from './asset.js?url';
+
+// Load assets as strings
+import assetAsString from './shader.glsl?raw'
+
+// Load Web Workers (inline version as well)
+import Worker from './worker.js?worker'
+				</code></pre>
+				</section>
+
+				<section>
+				<h2>Static Assets</h2>
+				<ul>
+				<li>Importing in JS returns the URL to the asset</li>
+				<li>Can force URL to load via query string</li>
+				<li>Can return source via query string</li>
+				<li>And web workers</li>
+				<li class="fragment">Imports work for JSON</li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				show json1
+				</section>
+
+				<section>
+				<h2>Static Assets (2)</h2>
+				<ul>
+				<li class="fragment">glob imports</li>
+				<li class="fragment"><code>const stuff = import.meta.glob('glob pattern here')</code></li>
+				<li class="fragment">Lazy loaded</li>
+				<li class="fragment"><code>const stuff2 = import.meta.globEager('glob pattern here')</code></li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				show glob
+				</section>
+
+				<section>
+				<h2>Static Assets (3)</h2>
+				<ul>
+				<li class="fragment">Use the <code>/public</code> folder</li>
+				<li class="fragment">Can't be used in JS and is copied to <code>/</code></li>
+				</ul>
+				</section>
+
+				<section>
+				<h2>Demo</h2>
+				<aside class="notes">
+				show static2
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				slideNumber:"c/t"
+			});
+		</script>
+	</body>
+</html>

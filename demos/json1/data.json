@@ -1,0 +1,15 @@
+{
+	"name":"Ray",
+	"age":48,
+	"email":"raymondcamden@gmail.com",
+	"kids":[
+		"Jacob",
+		"Lynn",
+		"Jane",
+		"Noah",
+		"Maisie",
+		"Carol",
+		"Ashton",
+		"Weston"
+	]
+}

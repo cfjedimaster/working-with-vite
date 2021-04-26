@@ -1,0 +1,41 @@
+homepage: https://vitejs.dev/
+
+adds ESM support - no bundling
+	good definitions: https://irian.to/blogs/what-are-cjs-amd-umd-and-esm-in-javascript/
+fast HMR (Hot Module Replacement)
+adds TS, JSX, CSS(?) 
+
+
+Like Vue CLI, provides scaffolding
+But not based on webpack, uses Rollup for build
+
+faster, ie 10x
+not doing server side bundling, uses browser's ability to work with modules, no babel (https://caniuse.com/es6-module-dynamic-import)
+
+for production, must support this: https://caniuse.com/es6-module
+Chrome >=61
+Firefox >=60
+Safari >=11
+Edge >=16
+
+old - parses every single file, so bigger project == more time
+new, browser+ESM loads what it needs to do at first, as you use app, more is loaded
+vite does some work to keep http requests in check
+
+HMR over ESM was an issue, not supported natively, Vite fixes it
+
+s
+not a replacement
+
+npm i 
+
+getting started:
+npm init @vitejs/app
+OR
+npm init @vitejs/app projectName -- --template vue
+
+
+Links:
+Vite and VitePress - https://www.youtube.com/watch?v=xXrhg26VCSc
+
+good article on moving a project from vue cli to vite - https://medium.com/nerd-for-tech/from-vue-cli-to-vitejs-648d2f5e031d
